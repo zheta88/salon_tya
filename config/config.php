@@ -1,8 +1,8 @@
 <?php
 
-define('URL', 'https://salondebellezatya.herokuapp.com/');
+define('URL', 'http://localhost/salon2-master');
 
-define('HOST', 'heroku.com');
+define('HOST', 'localhost');
 define('DB', 'salon3');
 define('USER', 'root');
 define('PASSWORD', "");
