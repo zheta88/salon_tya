@@ -1,4 +1,4 @@
-<?include "models/nuevomodel.php"; ?>
+<?php include "models/nuevomodel.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
