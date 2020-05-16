@@ -4,7 +4,7 @@
     $consultacedula=$_POST ['documento'];
 	
 	$query = "SELECT * FROM personas where Cedula='".$consultacedula."'";
-	$resultado = $mysqli->query($query);
+	$resultado = $pgsql->query($query);
 	
 	$pdf = new PDF();
 	$pdf->AliasNbPages();

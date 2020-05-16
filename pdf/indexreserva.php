@@ -8,7 +8,7 @@
    INNER JOIN personas as pc on pc.idPersonas=reservas.Cliente
    INNER JOIN personas as pe on pe.idPersonas=reservas.Empleado
    GROUP BY pc.Nombre,pe.Nombre,RESERVAS.Fecha" ;
-	$resultado = $mysqli->query($query);
+	$resultado = $pgsql->query($query);
 	
 	$pdf = new PDF();
 	$pdf->AliasNbPages();

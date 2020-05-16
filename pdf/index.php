@@ -3,7 +3,7 @@
 	require 'conexion.php';
 	
 	$query = "SELECT * FROM personas";
-	$resultado = $mysqli->query($query);
+	$resultado = $pgsql->query($query);
 	
 	$pdf = new PDF();
 	$pdf->AliasNbPages();

@@ -4,7 +4,7 @@
     $consultanro_documento=$_POST ['documento'];
 	
 	$query = "	'".$consultanro_documento."'";
-	$resultado = $mysqli->query($query);
+	$resultado = $pgsql->query($query);
 	
 	$pdf = new PDF();
 	$pdf->AliasNbPages();
