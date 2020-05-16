@@ -2,10 +2,10 @@
 
 define('URL', 'https://salondebellezatya.herokuapp.com/');
 
-define('HOST', 'heroku.com');
-define('DB', 'salon3');
-define('USER', 'root');
-define('PASSWORD', "");
-define('CHARSET', 'utf8mb4');
+define('HOST', '');
+define('DB', '');
+define('USER', '');
+define('PASSWORD', '');
+define('CHARSET', '');
 
 ?>
