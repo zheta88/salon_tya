@@ -1,6 +1,7 @@
 <?php
 	include 'plantilla.php';
-    include_once '../libs/database.php';
+	include_once '../libs/database.php';
+	include '../config/config.php';
     $conexion = new Database();
     $consultanro_documento=$_POST ['documento'];
 	
