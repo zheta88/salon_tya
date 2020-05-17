@@ -5,7 +5,7 @@
     $conexion = new Database();
     $consultanro_documento=$_POST ['documento'];
 	
-	$query = " SELECT * from persona where nro_documento =	'$consultanro_documento'";
+	$query = " SELECT * from personas where nro_documento =	'$consultanro_documento'";
 	$resultado = $conexion->connect()->query($query);
 	
 	$pdf = new PDF();
