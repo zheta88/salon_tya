@@ -25,7 +25,7 @@
 	
 	$pdf->SetFont('Arial','',8);
 	
-	while($row = $resultado->fetch_assoc())
+	while($row = $query->fetch())
 	{
 		
 		$pdf->Cell(35,6,utf8_decode($row['nro_documento']),1,0,'C');
