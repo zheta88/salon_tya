@@ -1,10 +1,12 @@
 <?php
 	include 'plantilla.php';
-    require 'conexion.php';
-    $consultacedula=$_POST ['documento'];
+	include_once 'libs/database.php';
+    $conexion = new Database();
+	$consultacedula=$_POST ['documento'];
 	
-	$query = "SELECT * FROM personas where Cedula='".$consultacedula."'";
-	$resultado = $pgsql->query($query);
+	$query = "SELECT * FROM personas where nro_documento='".$consultacedula."'";
+	$resultado = $conexion->connect()->query($query);
+
 	
 	$pdf = new PDF();
 	$pdf->AliasNbPages();
@@ -12,7 +14,7 @@
 	
 	$pdf->SetFillColor(2,157,116);
 	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(35,6,'CEDULA',1,0,'C',1);
+	$pdf->Cell(35,6,'NUMERO DE DOCUMENTO',1,0,'C',1);
 	$pdf->Cell(35,6,'NOMBRE',1,0,'C',1);
 	$pdf->Cell(35,6,'APELLIDO',1,0,'C',1);
 	// $pdf->Cell(35,6,'CELULAR',1,0,'C',1);
@@ -23,10 +25,10 @@
 	
 	$pdf->SetFont('Arial','',8);
 	
-	while($row = $resultado->fetch_assoc())
+	while($row = $query->fetch())
 	{
-		
-		$pdf->Cell(35,6,utf8_decode($row['Cedula']),1,0,'C');
+	
+		$pdf->Cell(35,6,utf8_decode($row['nro_documento']),1,0,'C');
 		$pdf->Cell(35,6,utf8_decode($row['Nombre']),1,0,'C');
 		$pdf->Cell(35,6,utf8_decode($row['Apellidos']),1,0,'C');
 		// $pdf->Cell(35,6,$row['Celular'],1,1,'C',0);
