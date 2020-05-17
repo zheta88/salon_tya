@@ -1,10 +1,11 @@
 <?php
 	include 'plantilla.php';
-    require 'conexion.php';
+    include_once '../libs/database.php';
+    $conexion = new Database();
     $consultanro_documento=$_POST ['documento'];
 	
 	$query = "	'".$consultanro_documento."'";
-	$resultado = $pgsql->query($query);
+	$resultado = $conexion->connect()->query($query);
 	
 	$pdf = new PDF();
 	$pdf->AliasNbPages();
