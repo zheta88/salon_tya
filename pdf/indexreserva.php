@@ -1,6 +1,7 @@
 <?php
 	include 'plantilla2.php';
-	require 'conexion.php';
+	include_once 'libs/database.php';
+    $conexion = new Database();
 	
 	$query = "SELECT servicios.Tipo_servicio AS SERVICIO,pc.Nombre AS EMPLEADO,pe.Nombre AS CLIENTE, RESERVAS.Fecha,reservas.Hora,RESERVAS.Precio,RESERVAS.Observaciones
 	FROM RESERVAS
@@ -8,7 +9,7 @@
    INNER JOIN personas as pc on pc.idPersonas=reservas.Cliente
    INNER JOIN personas as pe on pe.idPersonas=reservas.Empleado
    GROUP BY pc.Nombre,pe.Nombre,RESERVAS.Fecha" ;
-	$resultado = $pgsql->query($query);
+   $resultado = $conexion->connect()->query($query);
 	
 	$pdf = new PDF();
 	$pdf->AliasNbPages();
