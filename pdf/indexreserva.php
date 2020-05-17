@@ -1,6 +1,6 @@
 <?php
 	include 'plantilla2.php';
-	include_once 'libs/database.php';
+	//include_once 'libs/database.php';
     $conexion = new Database();
 	
 	$query = "SELECT servicios.Tipo_servicio AS SERVICIO,pc.Nombre AS EMPLEADO,pe.Nombre AS CLIENTE, RESERVAS.Fecha,reservas.Hora,RESERVAS.Precio,RESERVAS.Observaciones

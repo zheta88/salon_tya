@@ -1,6 +1,6 @@
 <?php
 	include 'plantilla.php';
-	include_once 'libs/database.php';
+	include_once '../libs/database.php';
     $conexion = new Database();
 	$consultacedula=$_POST ['documento'];
 	
