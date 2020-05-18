@@ -99,7 +99,7 @@ h1
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     </div>
 	</div>
-    <title>Document</title>
+    <title>SalonTYA</title>
 </head>
 <body>
 
