@@ -35,7 +35,7 @@ if(is_string( $token)){
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = 'Recuperacion   '.utf8_decode('   contraseña');
         //$mail->Body    = 'Correo de prueba 3';
-        $mail->Body = ' Ingresa al siguiente link y cambia tu '.utf8_decode('contraseña').' . <a href="http://localhost/salon2-master/cambia_pass?token=' . $token . '">Cambiar contrase&ntilde;a</a>';
+        $mail->Body = ' Ingresa al siguiente link y cambia tu '.utf8_decode('contraseña').' . <a href="https://salondebellezatya.herokuapp.com/cambia_pass?token=' . $token . '">Cambiar contrase&ntilde;a</a>';
     
 
         $mail->send();
