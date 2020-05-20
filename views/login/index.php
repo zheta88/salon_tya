@@ -35,31 +35,7 @@
         $query->execute(['Correo' => $Correo, 'Contrasena' => $Contrasena]);
 
         $row = $query->fetch(PDO::FETCH_NUM);
-        if($row == true){
-            // validar rol
-            $rol = $row[0];
-            $_SESSION['rol'] = $rol;
-            $_SESSION ['idPersonas'] =$row[1];
-
-            switch($_SESSION['rol']){
-                case 1:
-                    header('location: admin');
-                break;
-    
-                case 2:
-                header('location: cliente');
-				break;
-				case 3:
-					header('location: empleado');
-					break;
-    
-                default:
-            }
-        }else{
-            // no existe el usuario
-            echo "El usuario o contraseña son incorrectos";
-        }
-
+        
     }
     
 
@@ -93,6 +69,32 @@
 						<div class="loginBox">
 							<img src="public/image/login2.png" class="avatar" alt="">
 							<h2>Login</h2>
+                            <?php
+                            if($row == true){
+            // validar rol
+            $rol = $row[0];
+            $_SESSION['rol'] = $rol;
+            $_SESSION ['idPersonas'] =$row[1];
+
+            switch($_SESSION['rol']){
+                case 1:
+                    header('location: admin');
+                break;
+    
+                case 2:
+                header('location: cliente');
+				break;
+				case 3:
+					header('location: empleado');
+					break;
+    
+                default:
+            }
+        }else {
+            
+            // no existe el usuario
+            echo "El usuario o contraseña son incorrectos";
+        } ?>
 
 							<form action="#" method="post">                           	
 								<div class="form-group">									
