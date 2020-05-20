@@ -1,21 +1,46 @@
 <?php
-// Inicializar la sesión.
+//opcion 1 ( funciona)---------------
+//session_start ();
+//session_destroy ();
+//header ("location: login");
+//------------------------------------------
+
+//opcion 2 ( probando)----------------------
 
 session_start();
 
-// Destruir todas las variables de sesión.
-$_SESSION = array();
+// Máxima duración de sesión activa en hora
+define( 'MAX_SESSION_TIEMPO', 3 * 1 );
 
-// Si se desea destruir la sesión completamente, borre también la cookie de sesión.
-// Nota: ¡Esto destruirá la sesión, y no la información de la sesión!
-if (ini_get("session.use_cookies")) {
-    $params = session_get_cookie_params();
-    setcookie(session_name(), '', time() - 42,
-        $params["path"], $params["domain"],
-        $params["secure"], $params["httponly"]
-    );
+// Controla cuando se ha creado y cuando tiempo ha recorrido 
+if ( isset( $_SESSION[ 'ULTIMA_ACTIVIDAD' ] ) && 
+     ( time() - $_SESSION[ 'ULTIMA_ACTIVIDAD' ] > MAX_SESSION_TIEMPO ) ) {
+
+    // Si ha pasado el tiempo sobre el limite destruye la session
+    destruir_session();
 }
 
-// Finalmente, destruir la sesión.
-session_destroy();
+$_SESSION[ 'ULTIMA_ACTIVIDAD' ] = time();
+
+// Función para destruir y resetear los parámetros de sesión
+function destruir_session() {
+
+    $_SESSION = array();
+    if ( ini_get( 'session.use_cookies' ) ) {
+        $params = session_get_cookie_params();
+        setcookie(
+            session_name(),
+            '',
+            time() - MAX_SESSION_TIEMPO,
+            $params[ 'path' ],
+            $params[ 'domain' ],
+            $params[ 'secure' ],
+            $params[ 'httponly' ] );
+    }
+
+    @session_destroy();
+    header ("location: login");
+}
+
 ?>
+
