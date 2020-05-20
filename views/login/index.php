@@ -26,17 +26,6 @@
         }
     }
 
-    if(isset($_POST['Correo']) && isset($_POST['Contrasena'])){
-        $Correo = $_POST['Correo'];
-        $Contrasena = md5($_POST['Contrasena']);
-
-        $db = new Database();
-        $query = $db->connect()->prepare('SELECT*FROM personas WHERE Correo = :Correo AND Contrasena = :Contrasena');
-        $query->execute(['Correo' => $Correo, 'Contrasena' => $Contrasena]);
-
-        $row = $query->fetch(PDO::FETCH_NUM);
-        
-    }
     
 
 ?>
@@ -70,7 +59,16 @@
 							<img src="public/image/login2.png" class="avatar" alt="">
 							<h2>Login</h2>
                             <?php
-                            if($row == true){
+                            if(isset($_POST['Correo']) && isset($_POST['Contrasena'])){
+        $Correo = $_POST['Correo'];
+        $Contrasena = md5($_POST['Contrasena']);
+
+        $db = new Database();
+        $query = $db->connect()->prepare('SELECT*FROM personas WHERE Correo = :Correo AND Contrasena = :Contrasena');
+        $query->execute(['Correo' => $Correo, 'Contrasena' => $Contrasena]);
+
+        $row = $query->fetch(PDO::FETCH_NUM);
+        if($row == true){
             // validar rol
             $rol = $row[0];
             $_SESSION['rol'] = $rol;
@@ -90,11 +88,13 @@
     
                 default:
             }
-        }else {
-            
+        }else{
             // no existe el usuario
             echo "El usuario o contraseña son incorrectos";
-        } ?>
+        }
+
+    }
+    ?>
 
 							<form action="#" method="post">                           	
 								<div class="form-group">									
