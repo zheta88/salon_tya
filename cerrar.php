@@ -1,5 +1,8 @@
 <?php
-session_start ();
-session_destroy ();
+session_start();
+if ($_SESSION['last_action'] < time() - 30 ) {
+ 
+}
+
 header ("location: login");
 ?>
