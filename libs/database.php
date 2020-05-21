@@ -20,13 +20,13 @@ class Database{
     
         try{
             
-            $connection = "pgsql:host=" . $this->host . ";dbname=" . $this->db;
+            $connection = "pgsql:host=" . $this->host . ";dbname=" . $this->db;"SET CLIENT_ENCODING TO 'UTF8'";
             $options = [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_EMULATE_PREPARES   => false,
 		
             ];
-            $pdo = new PDO($connection, $this->user, $this->password, $options,"SET CLIENT_ENCODING TO 'UTF8'");
+            $pdo = new PDO($connection, $this->user, $this->password, $options);
     
             return $pdo;
 
