@@ -2,9 +2,9 @@
 
 define('URL', 'https://salondebellezatya.herokuapp.com/');
 
-define('HOST', 'ec2-18-233-32-61.compute-1.amazonaws.com');
-define('DB', 'd1bh0aame8tlh9');
-define('USER', 'aexfxezwrawarg');
-define('PASSWORD', '787475b9a8d0a1761af0628a0f4457a8593455032347be5d00a900b78fdf98c9');
+define('HOST', 'ec2-3-91-139-25.compute-1.amazonaws.com');
+define('DB', 'd8d9f1m6i3ge1m');
+define('USER', 'uvionmdvurwyen');
+define('PASSWORD', '27da61d46f2846bf65f741f01cdcd48bad396e3f5a639bdd758f8982f2d48d3d');
 
 ?>
