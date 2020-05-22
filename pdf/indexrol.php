@@ -2,7 +2,7 @@
 	include 'plantilla.php';
     include_once '../libs/database.php';
 	include '../config/config.php';
-	$conexion = new Database();
+    $conexion = new Database();
     $consultarol=$_POST ['ROL_idROL'];
 	
 	$query = "SELECT * FROM personas where ROL_idROL='".$consultarol."'";
