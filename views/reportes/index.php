@@ -45,7 +45,7 @@
         <div class="col-lg-4" style="background-color:#5CACEB;padding:20px;margin-top:20px;">
         <h2 style="color:black;">Reporte por Rol</h2>
         <form action="<?php echo constant('URL'); ?>pdf/indexrol.php" method="POST">
-        <select name="ROL_idROL" id="inputState" class="form-control">
+        <select name="rol" id="inputState" class="form-control">
 			<option selected>Elige Rol...</option>
             <option value="1">Administrador</option>
             <option value="2">Clientes</option>
