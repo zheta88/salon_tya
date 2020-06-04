@@ -11,17 +11,17 @@ class Nuevareservamodel extends Model{
        
 
         // insertar
-        $query = $this->db->connect()->prepare('INSERT INTO reservas (Cliente,SERVICIOS_idSERVICIOS,Empleado,Fecha,Hora,Observaciones,Precio) 
-        VALUES(:Cliente,:SERVICIOS_idSERVICIOS, :Empleado, :Fecha, :Hora, :Observaciones, :Precio)');
+        $query = $this->db->connect()->prepare('INSERT INTO reservas (cliente,servicios_idservicios,empleado,fecha,hora,observaciones,precio) 
+        VALUES(:cliente,:servicios_idservicios, :empleado, :fecha, :hora, :observaciones, :precio)');
         try{
             $query->execute([
-                'Cliente'=>$datos['Cliente'],
-                'SERVICIOS_idSERVICIOS' => $datos['SERVICIOS_idSERVICIOS'],
-                'Empleado' => $datos['Empleado'],
-                'Fecha' => $datos['Fecha'],
-                'Hora'=>$datos['Hora'],
-                'Observaciones'=>$datos['Observaciones'],
-                'Precio'=>$datos['Precio']            
+                'cliente'=>$datos['cliente'],
+                'servicios_idservicios' => $datos['servicios_idservicios'],
+                'empleado' => $datos['empleado'],
+                'fecha' => $datos['fecha'],
+                'hora'=>$datos['hora'],
+                'observaciones'=>$datos['observaciones'],
+                'precio'=>$datos['precio']            
             ]);
             return true;
         }catch(PDOException $e){

@@ -29,7 +29,7 @@ class NuevoModel extends Model{
             ]);
             return true;
         }catch(PDOException $e ){
-           // echo $datos['Documento_idDocumento'];
+            echo $e;
             return false;
           
         }
@@ -39,7 +39,7 @@ class NuevoModel extends Model{
     public function getroles(){
         $item = array();
         try{
-            $query = $this->db->connect()->prepare('SELECT * FROM rol where "idROL" !=1');
+            $query = $this->db->connect()->prepare('SELECT * FROM rol where idROL !=1');
 
             $query->execute();
             $i=0;

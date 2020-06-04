@@ -15,17 +15,17 @@ class ConsultaModel extends Model{
             
             while($row = $query->fetch()){
                 $item = new Persona();
-                $item->idPersonas =$row['idPersonas'];
-                $item->ROL_idROL =$row['ROL_idROL'];
-                $item->Documento_idDocumento = $row['Documento_idDocumento'];
+                $item->idPersonas =$row['idpersonas'];
+                $item->ROL_idROL =$row['rol_idrol'];
+                $item->Documento_idDocumento = $row['documento_iddocumento'];
                 $item->nro_documento =$row['nro_documento'];
-                $item->Nombre    = $row['Nombre'];
-                $item->Apellidos  = $row['Apellidos'];
-                $item->Celular =$row ['Celular'];
-                $item->Direccion =$row['Direccion'];
-                $item->Correo =$row['Correo'];
-                $item->Usuario =$row['Usuario'];
-                $item->Contrasena=$row['Contrasena'];
+                $item->Nombre    = $row['nombre'];
+                $item->Apellidos  = $row['apellidos'];
+                $item->Celular =$row ['celular'];
+                $item->Direccion =$row['direccion'];
+                $item->Correo =$row['correo'];
+                $item->Usuario =$row['usuario'];
+                $item->Contrasena=$row['contrasena'];
                
 
                 array_push($items, $item);
@@ -44,17 +44,17 @@ class ConsultaModel extends Model{
             $query->execute(['id' => $id]);
             
             while($row = $query->fetch()){
-                $item->idPersonas =$row['idPersonas'];
-                $item->ROL_idROL =$row['ROL_idROL'];
-                $item->Documento_idDocumento = $row['Documento_idDocumento'];
+                $item->idPersonas =$row['idpersonas'];
+                $item->ROL_idROL =$row['rol_idrol'];
+                $item->Documento_idDocumento = $row['documento_iddocumento'];
                 $item->nro_documento =$row['nro_documento'];
-                $item->Nombre    = $row['Nombre'];
-                $item->Apellidos  = $row['Apellidos'];
-                $item->Celular =$row['Celular'];
-                $item->Direccion =$row['Direccion'];
-                $item->Correo =$row['Correo'];
-                $item->Usuario=$row['Usuario'];
-                $item->Contrasena =$row['Contrasena'];
+                $item->Nombre    = $row['nombre'];
+                $item->Apellidos  = $row['apellidos'];
+                $item->Celular =$row['celular'];
+                $item->Direccion =$row['direccion'];
+                $item->Correo =$row['correo'];
+                $item->Usuario=$row['usuario'];
+                $item->Contrasena =$row['contrasena'];
                 
             }
             return $item;
@@ -64,11 +64,12 @@ class ConsultaModel extends Model{
     }
 
     public function update($item){
-        $query = $this->db->connect()->prepare('UPDATE personas SET ROL_idROL=:ROL_idROL,Nombre = :Nombre, Apellidos = :Apellidos, Celular =:Celular, Direccion = :Direccion, Correo = :Correo,Usuario =:Usuario, Contrasena = :Contrasena  WHERE Documento_idDocumento = :Documento_idDocumento');
+        $query = $this->db->connect()->prepare('UPDATE personas SET ROL_idROL=:ROL_idROL,Nombre = :Nombre, Apellidos = :Apellidos, Celular =:Celular, Direccion = :Direccion, Correo = :Correo,Usuario =:Usuario, Contrasena = :Contrasena, Documento_idDocumento = :Documento_idDocumento  WHERE nro_documento = :nro_documento');
         try{
             $query->execute([
                 'ROL_idROL'=>$item ['ROL_idROL'],
                 'Documento_idDocumento' => $item['Documento_idDocumento'],
+                'nro_documento' => $item['nro_documento'],
                 'Nombre' => $item['Nombre'],
                 'Apellidos' => $item['Apellidos'],
                 'Celular' =>$item['Celular'],
@@ -80,6 +81,7 @@ class ConsultaModel extends Model{
             ]);
             return true;
         }catch(PDOException $e){
+            echo $e;
             return false;
         }
     }

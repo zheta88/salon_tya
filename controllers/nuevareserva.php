@@ -14,19 +14,19 @@ class Nuevareserva extends Controller{
         $this->view->render('nuevareserva/index');
     }
 
-    function crear(){
+    function crearReserva(){
         $Cliente=$_POST['Cliente'];
         $servicio = $_POST['SERVICIOS_idSERVICIOS'];
         $Empleado    = $_POST['Empleado'];
-        $fecha  = $_POST['Fecha'];
-        $hora =$_POST['Hora'];
-        $observaciones=$_POST['Observaciones'];
-        $precio=$_POST['Precio'];
+        $fecha  = $_POST['fecha'];
+        $hora =$_POST['hora'];
+        $observaciones=$_POST['observaciones'];
+        $precio=$_POST['precio'];
 
         
-        if($this->model->insert(['Cliente'=>$Cliente,'SERVICIOS_idSERVICIOS' =>$servicio,
-         'Empleado' =>$Empleado, 'Fecha' =>$fecha , 'Hora' =>$hora, 
-         'Observaciones'=>$observaciones ,'Precio'=>$precio])){
+        if($this->model->insert(['cliente'=>$Cliente,'servicios_idservicios' =>$servicio,
+         'empleado' =>$Empleado, 'fecha' =>$fecha , 'hora' =>$hora, 
+         'observaciones'=>$observaciones ,'precio'=>$precio])){
  
             $this->view->mensaje = "Registro creado correctamente";
             $this->view->render('nuevareserva/index');

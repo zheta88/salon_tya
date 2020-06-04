@@ -1,15 +1,4 @@
-<?php
 
-    session_start();
-
-    if(!isset($_SESSION['rol'])){
-        header('location: login.php');
-    }else{
-        if($_SESSION['rol'] != 1){
-            header('location: login.php');
-        }
-    }
-?>
 
 
 <!DOCTYPE html>
@@ -22,12 +11,19 @@
 <body>
 <?php require 'views/header.php';?>
 <div id="main">
-
-<h1>ADMIN</h1>
-<a href="cerrar.php">Cerrar Sesion</a>
-<input type="button" class="btn btn-success" onclick="window.location='<?=constant('URL') . 'consulta'?>'" value="Módulo Personas"/>
-<input type="button" class="btn btn-success" onclick="window.location='<?=constant('URL') . 'consultareserva'?>'" value="Módulo Reservas"/>
-<input type="button" class="btn btn-success" onclick="window.location='<?=constant('URL') . 'consultaempleado'?>'" value="Módulo Empleados"/>
+<a style="color:red;font-size:20px;position:absolute;left:1200px;" 
+ href="cerrar.php"><strong>Cerrar Sesion</strong></a>       
+<div>
+<h1 style="text-align:center;">¡Bienvenido Administrador!</h1>   
+<p></p>
+</div>
+<div >
+<input style="display:block" type="button" class="btn btn-info btn-block" onclick="window.location='<?=constant('URL') . 'consulta'?>'" value="Módulo Personas"/>
+</div>
+<div>
+<input style="display:block;" type="button" class="btn btn-warning   btn-block" onclick="window.location='<?=constant('URL') . 'consultareserva'?>'" value="Módulo Reservas"/>
+</div>
+<input style="display:block;" type="button" class="btn btn-secundary btn-block" onclick="window.location='<?=constant('URL') . 'consultaempleado'?>'" value="Módulo Empleados"/>
 
 </div>
 

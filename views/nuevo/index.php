@@ -11,9 +11,8 @@
     <title>Registro</title>
 </head>
 <body>
-
     <?php require 'views/header.php'; ?>
-
+		<?php $modificar =  isset($this->persona)? true: false;?>
         <div class="container-fluid" style="text-align:center;">
             <div><?php echo $this->mensaje; ?></div>
             <div class="row">
@@ -21,20 +20,31 @@
 					<div class="card">
 						<div class="loginBox">
                             <img src="public/image/registro.jpg" class="avatar" alt="">
-							<h2>Registro</h2>
-                            <form action="<?php echo constant('URL'); ?>nuevo/crear" method="POST">
+							<h2><?php if($modificar){echo "Modificar";}else{echo "Registro";}?></h2>
+							<form action="<?php 
+											$destino = constant('URL');
+											if(!$modificar){$destino .= "nuevo/crear";}
+											else { $destino .= "consulta/actualizarPersona/";}
+											echo $destino;
+											?>" method="POST">
                             <div class="form-group">									
                             
 									   <?php
+									   	require_once "models/nuevomodel.php";
 										 $nuevomodel=new nuevomodel();
-										 $opcionesDocumento= $nuevomodel->getdocumento(); 
+										 $opcionesDocumento= $nuevomodel->getdocumento();
+										 //var_dump($this->persona);
 									 	?>
 
                                         <select name="Documento_idDocumento" id="inputState" class="form-control">
 										
                                             <option selected>Elige Tipo de documento...</option>
 											<?php foreach ($opcionesDocumento as $elemento){
-                                            echo '<option value="'.$elemento['idDocumento'].'">'.$elemento['TipodeDocumento'].'</option>';
+											echo '<option value="'.$elemento['iddocumento'].'"';
+											if($modificar && $this->persona->Documento_idDocumento == $elemento['iddocumento']){
+												echo " SELECTED";
+											}
+											echo '>'.$elemento['tipodedocumento'].'</option>';
 											 }?>
                                            
 
@@ -47,7 +57,8 @@
 							
 							
 							<div class="form-group">									
-									<input type="text" class="form-control input-lg" name="nro_documento" placeholder="Número de documento" required>        
+									<input type="text" class="form-control input-lg" 
+									name="nro_documento" placeholder="Número de documento" value="<?php if($modificar){echo $this->persona->nro_documento;}?>"  required>
 								</div> 
                          	
 								<div class="form-group">									
@@ -55,7 +66,7 @@
 									   <?php
 										 $nuevomodel=new nuevomodel();
 										 $opcionesRoles= $nuevomodel->getroles(); 
-										//	 var_dump($opcionesRoles); 
+										//var_dump($opcionesRoles); 
 									 
 									 ?>
 
@@ -63,7 +74,11 @@
 										
                                             <option selected>Elige Rol...</option>
 											<?php foreach ($opcionesRoles as $elemento){
-                                            echo '<option value="'.$elemento['idROL'].'">'.$elemento['NOMBRE_ROL'].'</option>';
+											echo '<option value="'.$elemento['idrol'].'"';
+											if($modificar && $this->persona->ROL_idROL == $elemento['idrol']){
+												echo " SELECTED";
+											}
+											echo '>'.$elemento['nombre_rol'].'</option>';
 											 }?>
                                            
 
@@ -73,30 +88,32 @@
 								</div> 
                          	
 								<div class="form-group">									
-									<input type="text" class="form-control input-lg" name="Nombre" placeholder="Nombres" required>        
+									<input type="text" class="form-control input-lg" name="Nombre" placeholder="Nombres" value="<?php if($modificar){echo $this->persona->Nombre;}?>" required>        
 								</div>							
 								<div class="form-group">        
-									<input type="text" class="form-control input-lg" name="Apellidos" placeholder="Apellidos" required>       
+									<input type="text" class="form-control input-lg" name="Apellidos" placeholder="Apellidos"value="<?php if($modificar){echo $this->persona->Apellidos;}?>" required>       
 								</div>
 								<div class="form-group">									
-									<input type="text" class="form-control input-lg" name="Celular" placeholder="Celular" required>        
+									<input type="text" class="form-control input-lg" name="Celular" placeholder="Celular" value="<?php if($modificar){echo $this->persona->Celular;}?>" required>        
 								</div> 
                          	
 								<div class="form-group">									
-									<input type="text" class="form-control input-lg" name="Direccion" placeholder="Direccion" required>        
+									<input type="text" class="form-control input-lg" name="Direccion" placeholder="Direccion" value="<?php if($modificar){echo $this->persona->Direccion;}?>" required>        
 								</div> 
                          	
 								<div class="form-group">									
-									<input type="email" class="form-control input-lg" name="Correo" placeholder="E-mail" required>        
+									<input type="email" class="form-control input-lg" name="Correo" placeholder="E-mail" value="<?php if($modificar){echo $this->persona->Correo;}?>"required>        
 								</div>	
 								<div class="form-group">									
-									<input type="text" class="form-control input-lg" name="Usuario" placeholder="Usuario" required>        
+									<input type="text" class="form-control input-lg" name="Usuario" placeholder="Usuario" value="<?php if($modificar){echo $this->persona->Usuario;}?>" required>        
 								</div>						
 								<div class="form-group">        
-									<input type="password" class="form-control input-lg" name="Contrasena" placeholder="Contraseña" required>       
+									<input type="password" class="form-control input-lg" name="Contrasena" placeholder="Contraseña" <?php if(!$modificar){echo "required";}?>>
 								</div>
 								<div class="boton">							    
-									<button type="submit" class="btn btn-success btn-block">Registrar</button>
+									<button type="submit" class="btn btn-success btn-block">
+										<?php if(!$modificar){echo "Registrar";}else {echo "Modificar";}?>
+									</button>
 								</div>
                             </form>
                         </div>

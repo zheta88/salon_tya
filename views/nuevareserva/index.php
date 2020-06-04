@@ -22,7 +22,7 @@
 						<div class="loginBox">
                             <img src="public/image/agenda.jpg" class="avatar" alt="">
 							<h2>Reservar</h2>
-                            <form action="<?php echo constant('URL'); ?>nuevareserva/crear" method="POST">
+                            <form action="<?php echo constant('URL'); ?>nuevareserva/crearReserva" method="POST">
 								<div class="form-group">									
                             
                                        
@@ -37,7 +37,7 @@
 										
                                             <option selected>Elige Servicio...</option>
 											<?php foreach ($opcionesServicio as $elemento){
-                                            echo '<option value="'.$elemento['idSERVICIOS'].'">'.$elemento['Tipo_servicio'].'</option>';
+                                            echo '<option value="'.$elemento['idservicios'].'">'.$elemento['tipo_servicio'].'</option>';
 											 }?>
                                            
 
@@ -59,7 +59,7 @@
 										
                                             <option selected>Quien deseas que te atienda...</option>
 											<?php foreach ($opcionesServicio as $elemento){
-                                            echo '<option value="'.$elemento['idPersonas'].'">'.$elemento['Nombre'].'</option>';
+                                            echo '<option value="'.$elemento['idpersonas'].'">'.$elemento['nombre'].'</option>';
 											 }?>
                                            
 
@@ -86,7 +86,7 @@
 										
                                             <option selected>Elige Cliente...</option>
 											<?php foreach ($opcionesServicio as $elemento){
-                                            echo '<option value="'.$elemento['idPersonas'].'">'.$elemento['Nombre'].'</option>';
+                                            echo '<option value="'.$elemento['idpersonas'].'">'.$elemento['nombre'].'</option>';
 											 }?>
                                            
 
@@ -104,16 +104,16 @@
                          	
 								
 								<div class="form-group">        
-									<input type="date" class="form-control input-lg" name="Fecha" placeholder="Fecha" required>       
+									<input type="date" class="form-control input-lg" name="fecha" placeholder="Fecha" required>       
 								</div>
                                 <div class="form-group">        
-									<input type="time" class="form-control input-lg" name="Hora" placeholder="Hora" required>       
+									<input type="time" class="form-control input-lg" name="hora" placeholder="Hora" required>       
 								</div>
                                 <div class="form-group">        
-									<textarea class="form-control input-lg" name="Observaciones" placeholder="Observaciones" cols="40"rows="5"></textarea>       
+									<textarea class="form-control input-lg" name="observaciones" placeholder="Observaciones" cols="40"rows="5"></textarea>       
 								</div>
                                 <div class="form-group">        
-									<input type="number" class="form-control input-lg" name="Precio" placeholder="Precio" required>       
+									<input type="number" class="form-control input-lg" name="precio" placeholder="Precio" required>       
 								</div>
 								<div class="boton">							    
 									<button type="submit" class="btn btn-success btn-block">Registrar</button>
