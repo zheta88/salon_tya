@@ -1,20 +1,24 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
+<title>salon tya</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="stylesheets/foundation.min.css">
 <link rel="stylesheet" href="stylesheets/main.css">
 <link rel="stylesheet" href="stylesheets/app.css">
 <script src="javascripts/modernizr.foundation.js"></script>
-<link rel="stylesheet" href="<?php echo constant('URL'); ?>public/css/main.css">
 <!-- Google fonts -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />
-    <title>SalonTYA</title>
+<!-- IE Fix for HTML5 Tags -->
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 </head>
 <body>
-
 <div class="row page_wrap">
   <!-- page wrap -->
   <div class="twelve columns">
@@ -25,7 +29,7 @@
           <li><a href="index.html">Inicio</a></li>
           <li class="has-flyout"> <a href="#">salontya</a><a href="#" class="flyout-toggle"></a>
             <ul class="flyout">
-              <li class="has-flyout"><a href="nosotros.html">Nosotros</a></li>
+              <li class="has-flyout"><a href="nosotros">Nosotros</a></li>
           
               <li class="has-flyout"><a href="contact.html">Contáctanos</a></li>
             </ul>
@@ -89,7 +93,7 @@
     <div class="row">
       <div class="twelve columns">
         <ul id="menu3" class="footer_menu horizontal">
-          <li ><a href="index">Inicio</a></li>
+          <li ><a href="index.html">Inicio</a></li>
         </ul>
       </div>
     </div>
@@ -101,12 +105,5 @@
 <script src="javascripts/foundation.min.js"></script>
 <!-- Initialize JS Plugins -->
 <script src="javascripts/app.js"></script>
-<?php require 'views/footer.php'?>
-    
-    
 </body>
-
-
-
-	
 </html>
