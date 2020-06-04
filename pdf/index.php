@@ -25,10 +25,6 @@
 	 $pdf->Cell(35,6,'ROL',1,1,'C',1); 
 	
 	$pdf->SetFont('Arial','',8);
-<<<<<<< HEAD
-=======
-	
->>>>>>> desarrollo_bdpostgresql
 	while($row = $resultado->fetch())
 	{
 		
