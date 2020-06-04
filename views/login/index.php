@@ -2,6 +2,7 @@
     include_once 'models/nuevomodel.php';
 
     session_start();
+   
 
     if(isset($_GET['cerrar_sesion'])){
         session_unset();
@@ -10,9 +11,12 @@
     }
 
     if(isset($_SESSION['rol'])){
+       
         switch($_SESSION['rol']){
             case 1:
+              
                 header('location: admin');
+                
             break;
 
             case 2:
@@ -40,9 +44,14 @@
             $rol = $row[0];
             $_SESSION['rol'] = $rol;
             $_SESSION ['idPersonas'] =$row[1];
+            
+           
+
 
             switch($_SESSION['rol']){
+                
                 case 1:
+                  
                     header('location: admin');
                 break;
     

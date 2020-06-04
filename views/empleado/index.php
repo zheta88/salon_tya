@@ -2,10 +2,10 @@
 session_start();
 
 if(!isset($_SESSION['rol'])){
-    header('location: login.php');
+    header('location: login');
 }else{
     if($_SESSION['rol'] != 3){
-        header('location: login.php');
+        header('location: login');
     }
 }
 
