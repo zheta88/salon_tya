@@ -4,7 +4,7 @@ items.forEach(item => {
     item.addEventListener("click", function(){
         const nro_documento = this.dataset.nro_documento;
 
-        const confirm = window.confirm("Desea eliminar el registro?");
+        const confirm = window.confirm("Realmente desea eliminar el registro?");
 
         if(confirm){
             httpRequest("http://localhost/Salon2-master/consulta/eliminarPersona/" +nro_documento, function(e){

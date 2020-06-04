@@ -22,7 +22,8 @@ class Consulta extends Controller{
         $_SESSION["id_verPersona"] = $persona->nro_documento;
 
         $this->view->persona = $persona;
-        $this->view->render('consulta/detalle');
+        //$this->view->render('consulta/detalle');
+        $this->view->render('nuevo/index');
     }
 
     function actualizarPersona($param = null){
@@ -42,8 +43,11 @@ class Consulta extends Controller{
 
 
         unset($_SESSION['id_verPersona']);
-
-        if($this->model->update([ 'ROL_idROL'=>$ROL_idROL ,'nro_documento' => $nro_documento, 'Nombre' => $Nombre, 'Apellidos' => $Apellidos, 'Celular' =>$Celular, 'Direccion'=> $Direccion ,'Correo'=> $Correo,'Usuario'=>$Usuario, 'Contrasena'=> $Contrasena])){
+        $atributosModificar = [ 'Documento_idDocumento' => $Documento_idDocumento,'ROL_idROL'=>$ROL_idROL ,'nro_documento' => $nro_documento, 'Nombre' => $Nombre, 'Apellidos' => $Apellidos, 'Celular' =>$Celular, 'Direccion'=> $Direccion ,'Correo'=> $Correo,'Usuario'=>$Usuario];
+        if($Contrasena != "")
+            $atributosModificar['Contrasena'] =  $Contrasena;
+        var_dump($atributosModificar);
+        if($this->model->update($atributosModificar)){
             $persona = new Persona();
             $persona->ROL_idROL=$ROL_idROL;
             $persona->Documento_idDocumento = $Documento_idDocumento;
@@ -63,11 +67,12 @@ class Consulta extends Controller{
         }else{
             $this->view->mensaje = "No se pudo actualizar registro";
         }
-        $this->view->render('consulta/detalle');
+        header('Location: ' .  constant('URL') . 'consulta');
+        exit;
     }
 
     function eliminarPersona($param = null){
-        $nro_documento = $param[0];
+        $nro_documento = $param[2];
 
         if($this->model->delete($nro_documento)){
             $mensaje ="Registro eliminado correctamente";

@@ -29,7 +29,7 @@ class Consultareserva extends Controller{
     function actualizarReserva($param = null){
         session_start();
         $servicio = $_SESSION["id_verReserva"];
-        $Cliente=$_POST['Cliente'];
+        $Cliente=$_POST['C  liente'];
         $Empleado   = $_POST['Empleado'];
         $fecha=$_POST['Fecha'];
         $hora=$_POST['Hora'];

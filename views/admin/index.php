@@ -1,14 +1,22 @@
-<?php
+<?php 
+include_once 'models/nuevomodel.php';
+$conexion = new Database();
+session_start();
 
-    session_start();
+$iduser= $_SESSION['idPersonas'];
+$sql="SELECT idPersonas,Nombre from personas where idPersonas='$iduser'";
+$resultado = $conexion->connect()->query($sql);
+$columna=$resultado->fetch();
 
-    if(!isset($_SESSION['rol'])){
-        header('location: login.php');
-    }else{
-        if($_SESSION['rol'] != 1){
-            header('location: login.php');
-        }
+
+if(!isset($_SESSION['rol'])){
+    header('location: login');
+}else{
+    if($_SESSION['rol'] != 1){
+        header('location: login');
     }
+}
+
 ?>
 
 
@@ -22,12 +30,20 @@
 <body>
 <?php require 'views/header.php';?>
 <div id="main">
-
-<h1>ADMIN</h1>
-<a href="cerrar.php">Cerrar Sesion</a>
-<input type="button" class="btn btn-success" onclick="window.location='<?=constant('URL') . 'consulta'?>'" value="Módulo Personas"/>
-<input type="button" class="btn btn-success" onclick="window.location='<?=constant('URL') . 'consultareserva'?>'" value="Módulo Reservas"/>
-<input type="button" class="btn btn-success" onclick="window.location='<?=constant('URL') . 'consultaempleado'?>'" value="Módulo Empleados"/>
+<a style="color:red;font-size:20px;position:absolute;left:1200px;" 
+ href="cerrar.php"><strong>Cerrar Sesion</strong></a>       
+<div>
+<h1 style="text-align:center;">Sesión Administrador</h1>   
+<h3>Bienvenido <?php echo utf8_decode($columna['nombre']);?></h3>
+<p></p>
+</div>
+<div >
+<input style="display:block" type="button" class="btn btn-info btn-block" onclick="window.location='<?=constant('URL') . 'consulta'?>'" value="Módulo Personas"/>
+</div>
+<div>
+<input style="display:block;" type="button" class="btn btn-warning   btn-block" onclick="window.location='<?=constant('URL') . 'consultareserva'?>'" value="Módulo Reservas"/>
+</div>
+<input style="display:block;" type="button" class="btn btn-secundary btn-block" onclick="window.location='<?=constant('URL') . 'consultaempleado'?>'" value="Módulo Empleados"/>
 
 </div>
 

@@ -26,16 +26,15 @@
 	$pdf->SetFont('Arial','',8);
 	
 	while($row = $resultado->fetch())
-	{
-		
+	{		
 		$pdf->Cell(35,6,utf8_decode($row['nro_documento']),1,0,'C');
-		$pdf->Cell(35,6,utf8_decode($row['Nombre']),1,0,'C');
-		$pdf->Cell(35,6,utf8_decode($row['Apellidos']),1,0,'C');
+		$pdf->Cell(35,6,utf8_decode($row['nombre']),1,0,'C');
+		$pdf->Cell(35,6,utf8_decode($row['apellidos']),1,0,'C');
 		// $pdf->Cell(35,6,$row['Celular'],1,1,'C',0);
 		// $pdf->Cell(35,6,$row['Direccion'],1,1,'C',0);
-		 $pdf->Cell(40,6,$row['Correo'],1,0,'C');
+		 $pdf->Cell(40,6,$row['correo'],1,0,'C');
 		// $pdf->Cell(35,6,$row['Contrasena'],1,1,'C',0);
-		 $pdf->Cell(35,6,$row['ROL_idROL'],1,1,'C');
+		 $pdf->Cell(35,6,$row['rol_idrol'],1,1,'C');
 	}
-	$pdf->Output();
+	$pdf->Output();	
 ?>

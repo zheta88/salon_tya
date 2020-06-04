@@ -29,7 +29,7 @@ class NuevoModel extends Model{
             ]);
             return true;
         }catch(PDOException $e ){
-           // echo $datos['Documento_idDocumento'];
+            echo $e;
             return false;
           
         }

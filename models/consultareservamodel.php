@@ -19,23 +19,23 @@ class Consultareservamodel extends Model{
            INNER JOIN personas as pc on pc.idPersonas=reservas.Cliente
            INNER JOIN personas as pe on pe.idPersonas=reservas.Empleado ';
            
-           if($_SESSION['rol'] != "1")
-            $consulta .= ' WHERE Empleado=' . $_SESSION['idPersonas'] . ' OR Cliente=' . $_SESSION['idPersonas'];
+           //if($_SESSION['rol'] != "1")
+           // $consulta .= ' WHERE Empleado=' . $_SESSION['idPersonas'] . ' OR Cliente=' . $_SESSION['idPersonas'];
            
-            $consulta .= ' GROUP BY pc.Nombre,pe.Nombre,RESERVAS.Fecha';
+           // $consulta .= ' GROUP BY pc.Nombre,pe.Nombre,RESERVAS.Fecha';
            
             $query = $this->db->connect()->query($consulta);
             
             while($row = $query->fetch()){
                 $item = new Reserva();
                 // $item->idRESERVAS=$row['idRESERVAS'];
-                $item->Cliente    = $row['CLIENTE'];
-                $item->Empleado =$row['EMPLEADO'];
-                $item->servicio = $row['SERVICIO'];  
-                $item->fecha  = $row['Fecha'];
-                $item->hora =$row ['Hora'];
-                $item->observaciones =$row['Observaciones'];
-                $item->precio =$row['Precio'];
+                $item->Cliente    = $row['cliente'];
+                $item->Empleado =$row['empleado'];
+                $item->servicio = $row['servicio'];  
+                $item->fecha  = $row['fecha'];
+                $item->hora =$row ['hora'];
+                $item->observaciones =$row['observaciones'];
+                $item->precio =$row['precio'];
                 // var_dump($observaciones);
                 // var_dump($SERVICIOS_idSERVICIOS);
                 // var_dump($Cliente);
@@ -50,18 +50,18 @@ class Consultareservamodel extends Model{
     public function getById($id){
         $item = new Reserva();
         try{
-            $query = $this->db->connect()->prepare('SELECT * FROM reservas WHERE idRESERVAS= :id');
+            $query = $this->db->connect()->prepare('SELECT * FROM reservas WHERE idreservas= :id');
           
             $query->execute(['id' => $id]);
             
             while($row = $query->fetch()){
-                $item->Cliente =$row['Cliente'];
-                $item->Empleado   = $row['Empleado'];
-                $item->servicio = $row['SERVICIOS_idSERVICIOS'];
-                $item->fecha  = $row['Fecha'];
-                $item->hora =$row['Hora'];
-                $item->observaciones =$row['Observaciones'];
-                $item->precio =$row['Precio'];
+                $item->Cliente =$row['cliente'];
+                $item->Empleado   = $row['empleado'];
+                $item->servicio = $row['servicios_idservicios'];
+                $item->fecha  = $row['fecha'];
+                $item->hora =$row['hora'];
+                $item->observaciones =$row['observaciones'];
+                $item->precio =$row['precio'];
                
             }
             return $item;
