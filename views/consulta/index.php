@@ -5,26 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="public/css/main.css">
+    <link rel="stylesheet" href="public/css/tabla.scss">
     
     <title>Tabla consulta</title>
-    <style>
 
-    #tabla{
-        width:50%;
-        background:#e6ffff;
-      
-       
-    }
-    th{
-        color:blue;
-        font-size:20px;
-    }
-    td{
-        color:black;
-    }
-      
-    </style>
 </head>
 <body>
 <div class="table table-bordered table">
@@ -109,7 +93,4 @@
     <script src="<?php echo constant('URL'); ?>/public/js/main.js"></script>
 
 
-  </table>
-</div>
-</body>
-</html>
+  

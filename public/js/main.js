@@ -7,7 +7,7 @@ items.forEach(item => {
         const confirm = window.confirm("Realmente desea eliminar el registro?");
 
         if(confirm){
-            httpRequest("https://salondebellezatya.herokuapp.com/consulta/eliminarPersona/" +nro_documento, function(e){
+            httpRequest("https://salondebellezatya.herokuapp.com/   consulta/eliminarPersona/" +nro_documento, function(e){
                 console.log(this.responseText);
                 const tbody = document.querySelector("#tbody-personas");
                 const fila  = document.querySelector("#fila-" + nro_documento);
