@@ -70,7 +70,7 @@
 									 
 									 ?>
 
-                                        <select name="ROL_idROL" id="inputState" class="form-control">
+                                        <select name="rol_idrol" id="inputState" class="form-control">
 										
                                             <option selected>Elige Rol...</option>
 											<?php foreach ($opcionesRoles as $elemento){
