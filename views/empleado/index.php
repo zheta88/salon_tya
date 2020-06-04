@@ -4,7 +4,7 @@ $conexion = new Database();
 session_start();
 
 $iduser= $_SESSION['idPersonas'];
-$sql="SELECT idPersonas,Nombre from personas where idPersonas='$iduser'";
+$sql="SELECT idPersonas,Nombre,correo from personas where idPersonas='$iduser'";
 $resultado = $conexion->connect()->query($sql);
 $columna=$resultado->fetch();
 

@@ -52,11 +52,6 @@
 
         <table id="tabla">
             <thead>
-            <?php
-                                        if($_SESSION['rol'] == "1"  ){
-                    
-									 
-									 ?>
             <div class="boton_nuevo">
         <input type="button" class="btn btn-success" onclick="window.location='<?=constant('URL') . 'nuevareserva'?>'" value="nueva reserva"/>
         <a href="reportereserva">
@@ -65,7 +60,6 @@
 
             </a>
         </div>
-        <?php } ?>
        
                 <tr>
                     <!-- <th>Número de reserva</th> -->
