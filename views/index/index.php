@@ -26,12 +26,12 @@
     <div class="row">
       <div class="nine columns header_nav">
         <ul id="menu-header" class="nav-bar horizontal">
-          <li><a href="index.html">Inicio</a></li>
+          <li><a href="index">Inicio</a></li>
           <li class="has-flyout"> <a href="#">salontya</a><a href="#" class="flyout-toggle"></a>
             <ul class="flyout">
               <li class="has-flyout"><a href="nosotros">Nosotros</a></li>
           
-              <li class="has-flyout"><a href="contact.html">Contáctanos</a></li>
+              <li class="has-flyout"><a href="contacto">Contáctanos</a></li>
             </ul>
           </li>
           <li ><a href="login">Log in</a></li>
@@ -93,7 +93,7 @@
     <div class="row">
       <div class="twelve columns">
         <ul id="menu3" class="footer_menu horizontal">
-          <li ><a href="index.html">Inicio</a></li>
+          <li ><a href="index">Inicio</a></li>
         </ul>
       </div>
     </div>
@@ -105,5 +105,6 @@
 <script src="javascripts/foundation.min.js"></script>
 <!-- Initialize JS Plugins -->
 <script src="javascripts/app.js"></script>
+<?php require 'views/footer.php';?>  
 </body>
 </html>
