@@ -52,6 +52,9 @@
 
         <table id="tabla">
             <thead>
+            <?php
+            if ($_SESSION['rol'] !="3"){
+                ?>
             <div class="boton_nuevo">
         <input type="button" class="btn btn-success" onclick="window.location='<?=constant('URL') . 'nuevareserva'?>'" value="nueva reserva"/>
         <a href="reportereserva">
@@ -59,6 +62,7 @@
             <img src="public/image/pdf.png" style="width:40px;">
 
             </a>
+            <?php } ?>
         </div>
        
                 <tr>
