@@ -21,8 +21,7 @@
 						<div class="loginBox">
                             <img src="public/image/registro.jpg" class="avatar" alt="">
 							<h2><?php if($modificar){echo "Modificar";}else{echo "Registro";}?></h2>
-							<button style="color:blue;"  href="inicio">Inicio</button>
-
+							<input type="button" class="btn btn-success" onclick="window.location='<?=constant('URL') . 'index'?>'" value="Volver a inicio"/>
 							<form action="<?php 
 											$destino = constant('URL');
 											if(!$modificar){$destino .= "nuevo/crear";}
