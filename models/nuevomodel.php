@@ -39,7 +39,7 @@ class NuevoModel extends Model{
     public function getroles(){
         $item = array();
         try{
-            $query = $this->db->connect()->prepare('SELECT * FROM rol where idROL !=1');
+            $query = $this->db->connect()->prepare('SELECT * FROM rol where idROL =2');
 
             $query->execute();
             $i=0;
