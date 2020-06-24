@@ -20,10 +20,8 @@ class Consultareservamodel extends Model{
            INNER JOIN personas as pe on pe.idPersonas=reservas.Empleado 
            ';
            
-           if($_SESSION['rol'] != "1")
+           if($_SESSION['rol'] !="1")
             $consulta .= ' WHERE Empleado=' . $_SESSION['idPersonas'] . ' OR Cliente=' . $_SESSION['idPersonas'];
-           
-            $consulta .= ' GROUP BY pc.Nombre,pe.Nombre,RESERVAS.Fecha';
            
             $query = $this->db->connect()->query($consulta);
             
