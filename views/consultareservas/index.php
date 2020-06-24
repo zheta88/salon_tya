@@ -57,6 +57,11 @@
                 ?>
             <div class="boton_nuevo">
         <input type="button" class="btn btn-success" onclick="window.location='<?=constant('URL') . 'nuevareserva'?>'" value="nueva reserva"/>
+        
+        <?php } ?>
+        <?php
+        if ($_SESSION['rol'] !="1"){
+                ?>
         <a href="reportereserva">
 
             <img src="public/image/pdf.png" style="width:40px;">
