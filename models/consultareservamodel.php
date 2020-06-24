@@ -17,12 +17,13 @@ class Consultareservamodel extends Model{
             FROM RESERVAS
            INNER JOIN servicios ON servicios.idSERVICIOS=reservas.SERVICIOS_idSERVICIOS
            INNER JOIN personas as pc on pc.idPersonas=reservas.Cliente
-           INNER JOIN personas as pe on pe.idPersonas=reservas.Empleado ';
+           INNER JOIN personas as pe on pe.idPersonas=reservas.Empleado 
+           ';
            
-           //if($_SESSION['rol'] != "1")
-           // $consulta .= ' WHERE Empleado=' . $_SESSION['idPersonas'] . ' OR Cliente=' . $_SESSION['idPersonas'];
+           if($_SESSION['rol'] != "1")
+            $consulta .= ' WHERE Empleado=' . $_SESSION['idPersonas'] . ' OR Cliente=' . $_SESSION['idPersonas'];
            
-           // $consulta .= ' GROUP BY pc.Nombre,pe.Nombre,RESERVAS.Fecha';
+            $consulta .= ' GROUP BY pc.Nombre,pe.Nombre,RESERVAS.Fecha';
            
             $query = $this->db->connect()->query($consulta);
             
