@@ -9,6 +9,8 @@
    INNER JOIN servicios ON servicios.idSERVICIOS=reservas.SERVICIOS_idSERVICIOS
    INNER JOIN personas as pc on pc.idPersonas=reservas.Cliente
    INNER JOIN personas as pe on pe.idPersonas=reservas.Empleado" ;
+   if($_SESSION['rol'] !="1")
+   $consulta .= ' WHERE Empleado=' . $_SESSION['idPersonas'] . ' OR Cliente=' . $_SESSION['idPersonas'];
    $resultado = $conexion->connect()->query($query);
 	
 	$pdf = new PDF();
