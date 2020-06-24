@@ -23,6 +23,15 @@ class Consultareservamodel extends Model{
            if($_SESSION['rol'] !="1")
             $consulta .= ' WHERE Empleado=' . $_SESSION['idPersonas'] . ' OR Cliente=' . $_SESSION['idPersonas'];
            
+            if($_SESSION['rol'] ="1")
+            echo "Has iniciado sesión como Administrador";
+            if($_SESSION['rol'] ="2")
+            echo "Has iniciado sesión como Cliente";
+            if($_SESSION['rol'] ="3")
+            echo "Has iniciado sesión como Empleado";
+
+            
+
             $query = $this->db->connect()->query($consulta);
             
             while($row = $query->fetch()){
