@@ -1,0 +1,205 @@
+CREATE SEQUENCE servicios_id_seq;
+CREATE TABLE servicios (
+  "idSERVICIOS" INT NOT NULL DEFAULT nextval('servicios_id_seq'),
+  "Tipo_servicio" VARCHAR(20) NULL DEFAULT NULL,
+  "Costo" float NULL DEFAULT NULL,
+  "Genero" VARCHAR(20) NULL DEFAULT NULL,
+  PRIMARY KEY ("idSERVICIOS"));
+
+INSERT INTO servicios ("idSERVICIOS", "Tipo_servicio", "Costo", "Genero") VALUES
+(1, 'PEDICURE', 12000, 'MUJER'),
+(2, 'MANICURE', 10000, 'HOMBRE'),
+(3, 'CORTE CABELLO', 14000, 'HOMBRE'),
+(4, 'TINTURA', 50000, 'MUJER'),
+(5, 'PEINADO', 16000, 'MUJER'),
+(6, 'CORTE CABELLO 2', 16000, 'MUJER');
+
+
+CREATE SEQUENCE rol_empleado_id_seq;
+CREATE TABLE rol_empleado (
+  "idROL_EMPLEADO" INT NOT NULL DEFAULT nextval('rol_empleado_id_seq') ,
+  "Nombre_Rol_Empleado" VARCHAR(20) NULL DEFAULT NULL,
+  PRIMARY KEY ("idROL_EMPLEADO"));
+INSERT INTO rol_empleado ("idROL_EMPLEADO", "Nombre_Rol_Empleado") VALUES
+(1, '	Peluquero'),
+(2, 'Peluquero 2'),
+(3, 'Pedicurista'),
+(4, 'Peinados'),
+(5, 'Manicurista'),
+(6, 'Tinturas'),
+(7, 'Depilacion');
+
+CREATE SEQUENCE rol_id_seq;
+CREATE TABLE rol (
+  "idROL" INT NOT NULL DEFAULT nextval('rol_id_seq'),
+  "NOMBRE_ROL" varchar(20) DEFAULT NULL,
+ PRIMARY KEY (idROL));
+
+INSERT INTO rol (idROL, NOMBRE_ROL) VALUES
+(1, 'Administrador'),
+(2, 'Cliente'),
+(3, 'Empleado');
+
+
+CREATE SEQUENCE documento_id_seq;
+CREATE TABLE documento (
+  "idDocumento" INT NOT NULL DEFAULT nextval('documento_id_seq'),
+  "TipodeDocumento" VARCHAR(250) NULL DEFAULT NULL,
+  PRIMARY KEY (idDocumento));
+
+INSERT INTO documento (idDocumento, TipodeDocumento) VALUES
+(1, 'Tarjeta de identidad'),
+(2, 'Cédula de ciudadanía'),
+(3, 'Cédula de extranjería');
+
+
+CREATE SEQUENCE personas_id_seq;
+CREATE TABLE personas (
+  "ROL_idROL" INT NULL DEFAULT NULL,
+  "idPersonas" INT NOT NULL DEFAULT nextval('personas_id_seq') ,
+  "Nombre" VARCHAR(40) NULL DEFAULT NULL,
+  "Apellidos" VARCHAR(40) NULL DEFAULT NULL,
+  "Celular" BIGINT NULL DEFAULT NULL,
+  "Direccion" VARCHAR(40) NULL DEFAULT NULL,
+  "Correo" VARCHAR(40) NULL DEFAULT NULL,
+  "Usuario" VARCHAR(20) NULL DEFAULT NULL,
+  "Contrasena" VARCHAR(50) NULL DEFAULT NULL,
+  "token" VARCHAR(255) NULL DEFAULT NULL,
+  "Documento_idDocumento" INT NULL DEFAULT NULL,
+  "nro_documento" INT NULL DEFAULT NULL,
+  PRIMARY KEY (idPersonas),
+  CONSTRAINT personas_ibfk_1
+    FOREIGN KEY (ROL_idROL)
+    REFERENCES rol (idROL),
+  CONSTRAINT personas_ibfk_2
+    FOREIGN KEY (Documento_idDocumento)
+    REFERENCES documento (idDocumento));
+
+INSERT INTO personas (ROL_idROL, idPersonas, Nombre, Apellidos, Celular, Direccion, Correo, Usuario, Contrasena, token, Documento_idDocumento, nro_documento) VALUES
+(2, 1, 'Lorena', '	Ramirez', 432423, 'KR 88', 'LORENA@GMAIL.COM', 'LORENA22', 'ed265bc903a5a097f61d3ec064d96d2e', 'CXGBmQQwCn', NULL, NULL),
+(2, 2, 'Fabio', '	Ortega', 234234, '	KR 66	', 'FABIO@GMAIL.COM', 'FABIO65', '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, NULL),
+(2, 3, 'LAURA', '	OCHOA', 788652, 'KR 100', 'LAURA@GMAIL.COM', 'LAURA90', '202cb962ac59075b964b07152d234b70', NULL, NULL, NULL),
+(2, 5, 'CAMILA', '	PEREZ', 565656, 'KR 01', 'CAMILA@GMAIL.COM', 'CAMILA72', '1234567', NULL, NULL, NULL),
+(1, 6, 'ZULLY', 'TAMAYO', 845484, 'KR 20 13', 'zullytamayom@gmail.com', 'ZULLY72', '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, NULL),
+(3, 7, 'SEBASTIAN', '	RODRIGUEZ', 4555, 'KR 23 45', 'SEBASTIAN@GMAIL.COM', 'SEBASTIAN72', '202cb962ac59075b964b07152d234b70', NULL, NULL, NULL),
+(3, 8, 'FREDDY', 'RAMOS', 46346347, 'KR 45 60', 'FREDDY@GMAIL.COM', 'FREDDY72', '202cb962ac59075b964b07152d234b70', NULL, NULL, NULL),
+(2, 12, 'tatiana', 'arias perez', 12149249489, 'cl 12 12 12', 'tatiana@gmail.com', 'tati10', 'ec6a6536ca304edf844d1d248a4f08dc', NULL, NULL, NULL),
+(2, 13, 'Heiver', 'Cuesta', 34232145, 'cr 30', 'heiver@gmail.com', 'heiver', '202cb962ac59075b964b07152d234b70', NULL, NULL, NULL),
+(3, 16, 'Camilo', 'Medina', 313223, 'cl 161', 'camilomedina@gmail.com', 'cami83', '202cb962ac59075b964b07152d234b70', NULL, NULL, NULL),
+(2, 17, 'yineth', 'martinez', 312441, 'cl 67 67', 'yineth@gmail.com', 'yineth1', '202cb962ac59075b964b07152d234b70', NULL, NULL, NULL),
+(2, 19, 'Lilia', 'Martinez gongora', 3132948318, 'carrera 8 no 17-42 casa 2 fundadores', 'limartigo@hotmail.com', 'lilimar', '827ccb0eea8a706c4c34a16891f84e7b', 'o12dsVk9u9', NULL, NULL),
+(2, 20, 'tatiana', 'arias perez', 12149249489, 'cl 12 12 12', 'tatiana@gmail.com', 'tati10', 'ec6a6536ca304edf844d1d248a4f08dc', NULL, NULL, NULL),
+(3, 21, 'Felipe', 'Arias', 31415355, 'CL 3 NO 4 5', 'felipe@gmail.com', 'pipelon', '202cb962ac59075b964b07152d234b70', NULL, NULL, NULL),
+(2, 22, 'Gustavo Francisco', 'Petro Urrego', 414253425, 'cl 45 45 45 ', 'gustavou@gmail.com', 'gus10', '827ccb0eea8a706c4c34a16891f84e7b', NULL, NULL, NULL),
+(3, 24, 'Daniela', 'Ñañez', 3149358357, 'cl 34 45 56 ', 'daniela@gmail.com', 'dani23', 'd9b1d7db4cd6e70935368a1efb10e377', NULL, NULL, NULL),
+(2, 25, 'nayibe', 'sanchez', 31248584, 'cl 12 3 2', 'nayibe@gmail.com', 'nayibe1', '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, NULL),
+(3, 27, 'kiko', 'jul', 7632573, '3', 'kiko@gmail.com', 'kiko2', '202cb962ac59075b964b07152d234b70', NULL, NULL, NULL),
+(3, 38, 'prueba', 'mayo', 314244, 'cl 12 3 2m', 'daniela@gmail.com', 'dani22', 'c8b2f17833a4c73bb20f88876219ddcd', NULL, 1, NULL),
+(3, 39, 'nayibe noa', 'tellez', 312315, 'cl 34 45 56 ', 'nayibe2@gmail.com', 'nayibe12', '202cb962ac59075b964b07152d234b70', NULL, 3, NULL),
+(3, 40, 'yano', 'lola', 325432743875, 'cl 34 45 56 ', 'kiko@gmail.com', 'gide', '202cb962ac59075b964b07152d234b70', NULL, 2, 2147483647),
+(3, 41, 'yano', 'lola', 325432743875, 'cl 34 45 56 ', 'kiko@gmail.com', 'gide', '202cb962ac59075b964b07152d234b70', NULL, 2, 2147483647),
+(3, 42, 'yano', 'lola', 325432743875, 'cl 34 45 56 ', 'kiko@gmail.com', 'gide', '202cb962ac59075b964b07152d234b70', NULL, 2, 2147483647),
+(2, 43, 'ww', 'Ñañez', 11111, 'cl 56', 'leidyjjj@gmail.com', '2', 'eccbc87e4b5ce2fe28308fd9f2a7baf3', NULL, 2, 2147483647),
+(2, 44, 'ww', 'Ñañez', 11111, 'cl 56', 'leidyjjj@gmail.com', '2', 'eccbc87e4b5ce2fe28308fd9f2a7baf3', NULL, 2, 2147483647),
+(3, 45, 'prueba', 'mayo', 314244, 'cl 12 3 2m', 'daniela@gmail.com', 'dani22', 'c8b2f17833a4c73bb20f88876219ddcd', NULL, 1, 777777776),
+(3, 46, 'kikokiko2', 'sanchez', 31248584, 'cl 12 3 2', 'kiko2@gmail.com', 'kikokk', '81dc9bdb52d04dc20036dbd8313ed055', NULL, 1, 2147483647),
+(2, 47, 'lorena', 'perez', 32241123, 'dg 12 12 12', 'loreperez@gmail.com', 'lorep', '202cb962ac59075b964b07152d234b70', NULL, 2, 2147483647),
+(3, 48, 'maria', 'martinez', 1431243, 'cr 23', 'marimar@gmail.com', 'marimar', '202cb962ac59075b964b07152d234b70', NULL, 3, 123),
+(2, 50, 'Paula', 'Aragon', 3124355889, 'cl 12 12 12', 'andreaortegon57@gmail.com', 'andrea57', 'a13e00b0854808128933f99f4955f338', NULL, 2, 1000253581),
+(3, 51, 'pepito ', 'perez', 235462, 'cl 33333', 'pepitoperez@mg.vom', 'fgg', '202cb962ac59075b964b07152d234b70', NULL, 2, 45646567);
+
+CREATE SEQUENCE reservas_id_seq;
+CREATE TABLE reservas (
+  "idRESERVAS" INT NOT NULL    DEFAULT nextval('reservas_id_seq'),
+  "Cliente" INT NULL DEFAULT NULL,
+  "Empleado" INT NULL DEFAULT NULL,
+  "SERVICIOS_idSERVICIOS" INT NULL DEFAULT NULL ,
+  "Fecha" DATE NULL DEFAULT NULL,
+  "Hora" TIME NULL DEFAULT NULL,
+  "Observaciones" VARCHAR(400) NULL DEFAULT NULL,
+  "Precio" FLOAT NULL DEFAULT NULL,
+  PRIMARY KEY (idRESERVAS),
+  CONSTRAINT FK_Empleado_personas_idPersonas
+    FOREIGN KEY (Empleado)
+    REFERENCES personas (idPersonas));
+INSERT INTO reservas (idRESERVAS, Cliente, Empleado, SERVICIOS_idSERVICIOS, Fecha, Hora, Observaciones, Precio) VALUES
+(1, 3, NULL, 3, '2020-05-05', '08:00:00', NULL, 14000),
+(2, 5, NULL, 4, '2020-05-05', '09:00:00', NULL, 10000),
+(3, 6, NULL, 4, '2020-08-07', '10:10:00', NULL, 50000),
+(4, 2, NULL, 2, '2020-05-04', '10:30:00', NULL, 14000),
+(5, 7, NULL, 2, '2020-05-09', '11:30:00', NULL, 10000),
+(6, 5, NULL, 5, '2020-06-02', '04:30:00', NULL, 16000),
+(7, 1, NULL, 5, '2020-06-02', '12:00:00', NULL, 16000),
+(8, NULL, NULL, 1, '2000-02-23', '17:05:00', 'asfksf', 12000),
+(9, NULL, NULL, 2, '2020-03-11', '12:00:00', '', 12000),
+(10, 1, NULL, 1, '2002-02-22', '12:12:00', '', 12000),
+(11, 1, NULL, 1, '2000-02-20', '17:05:00', '', 17000),
+(12, NULL, NULL, NULL, '2020-12-12', '12:12:00', '', 12000),
+(13, NULL, NULL, 1, '2020-12-12', '12:00:00', '', 14000),
+(14, 3, NULL, 3, '2020-12-12', '12:12:00', '', 15000),
+(15, 3, NULL, 3, '2000-02-24', '12:00:00', '', 14000),
+(16, 3, NULL, 1, '2020-03-23', '13:00:00', '', 10000),
+(17, 3, NULL, 1, '2020-04-12', '09:08:00', '', 7450),
+(18, 3, NULL, 1, '2002-02-02', '00:12:00', '', 14850),
+(19, 3, NULL, 3, '2020-06-06', '00:12:00', 'prueba', 30001),
+(20, 3, NULL, 6, '2020-10-10', '12:12:00', 'prueba2', 14000),
+(21, 3, NULL, 6, '2020-10-10', '12:12:00', 'prueba2', 14000),
+(22, 3, NULL, 3, '2020-03-20', '00:12:00', 'probando insert clientes', 14000),
+(23, 3, NULL, 2, '2020-12-12', '12:12:00', 'probando cliente lorena', 14000),
+(24, 3, NULL, 2, '2020-12-12', '00:12:00', 'probando cliente fabio', 14000),
+(25, 3, NULL, 2, '2020-12-12', '21:35:00', 'probando con cliente paula hora 935', 14000),
+(26, 3, NULL, 2, '2002-09-09', '21:09:00', 'servicio manicure , empleado sebastian, cliente Heiver, fecha 09092002 hora 99pm', 14890),
+(27, 3, NULL, 5, '2020-12-12', '12:12:00', 'prueba servicio peinado, empleado Freddy, cliente Heiver,  fecha 12/12/2020 , hora 1212 ----ULTIMA INSERCION', 14000),
+(28, 3, NULL, 1, '1222-12-12', '00:12:00', 'prueba servicio pedicure,empleado Jhon, cliente Heiver, fecha 12-12-1222, hora 1212', 15555),
+(29, 3, NULL, 3, '0009-09-09', '15:03:00', 'empleado sebastian, corte cabello, andrea,09090009, hora 0303 pm', 15590),
+(30, 3, NULL, 3, '2000-12-12', '00:12:00', 'prueba final final', 15789),
+(31, 3, NULL, 1, '2020-02-22', '12:12:00', 'PRUEBA CAMI', 14980),
+(38, NULL, NULL, 1, '3200-02-23', '12:30:00', 'ksngejgnurgnoejnveon prueba 24 marzo', 1200),
+(39, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(40, NULL, NULL, 1, '2020-12-12', '12:00:00', 'wkmveoimvreovmed prueba 24 marzo zzzzzzz', 12000),
+(41, 8, 13, 1, '0009-09-12', '12:00:00', 'kwnveubveugn3ro prueba equis', 14000),
+(42, 16, 5, 6, '0090-12-12', '12:00:00', 'no inserta', 4),
+(43, 12, 1, 4, '2020-05-10', '12:20:00', 'Última prueba', 25000),
+(44, 7, 19, 1, '0001-01-12', '12:00:00', 'pruebita veinticinco', 12),
+(45, 18, 20, 1, '2020-02-12', '12:12:00', 'tatiana pedicure lucho 1212pm 1212', 13000),
+(46, 21, 19, 3, '0002-02-22', '00:12:00', 'kjdhfwoeihfeowhn', 12000),
+(47, 23, 22, 1, '2020-03-28', '16:00:00', '', 14000),
+(48, 24, 25, 1, '2020-04-03', '15:00:00', 'llamar a confirmar antes de las 12 del mediodia.', 12000),
+(49, 27, 19, 1, '2021-12-12', '12:12:00', 'toca hasta el proximo año por el coronavirus', 12000),
+(50, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(51, 7, 22, 4, '2021-05-05', '23:05:00', 'covid-19', 13560);
+
+CREATE SEQUENCE rol_personas_id_seq;
+CREATE TABLE rol_personas (
+  "idRol_Personas" INT NOT NULL DEFAULT nextval('rol_personas_id_seq') ,
+  "ROL_EMPLEADO_idROL_EMPLEADO" INT NULL DEFAULT NULL,
+  "PERSONAS_idpersonas" INT NULL DEFAULT NULL,
+  PRIMARY KEY (idRol_Personas),
+  CONSTRAINT rol_personas_ibfk_1
+    FOREIGN KEY (ROL_EMPLEADO_idROL_EMPLEADO)
+    REFERENCES rol_empleado (idROL_EMPLEADO),
+  CONSTRAINT rol_personas_ibfk_2
+    FOREIGN KEY (PERSONAS_idpersonas)
+    REFERENCES personas (idPersonas));
+INSERT INTO rol_personas (idRol_Personas, ROL_EMPLEADO_idROL_EMPLEADO, PERSONAS_idpersonas) VALUES
+(1, 1, 6),
+(2, 2, 7),
+(3, 4, 6),
+(4, 3, 7),
+(5, 5, 8),
+(6, 6, 7),
+(7, 7, 8);
+
+
+CREATE SEQUENCE contrato_empleados_id_seq;
+CREATE TABLE contrato_empleados (
+  "idCONTRATO_EMPLEADOS" INT NOT NULL DEFAULT nextval('contrato_empleados_id_seq') ,
+  "Rol_Personas_idRol_Personas" INT NULL DEFAULT NULL,
+  "FECHA_INICIO" DATE NULL DEFAULT NULL,
+  "FECHA_FINALIZACION" DATE NULL DEFAULT NULL,
+  "SALARIO" FLOAT NULL DEFAULT NULL,
+  PRIMARY KEY (idCONTRATO_EMPLEADOS),
+  CONSTRAINT contrato_empleados_ibfk_1
+    FOREIGN KEY (Rol_Personas_idRol_Personas)
+    REFERENCES rol_personas (idrol_personas));
+
