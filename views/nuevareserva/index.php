@@ -95,7 +95,7 @@
                                           									
                                     <?php } else {?>
                                        
-                                            <input type="hidden" value=<?php echo $_SESSION['idPersonas'] ?> name="Empleado" >
+                                            <input type="hidden" value=<?php echo $_SESSION['idpersonas'] ?> name="Empleado" >
 
                                     <?php }?>
 								</div> 
