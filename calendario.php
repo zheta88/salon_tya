@@ -10,6 +10,7 @@
 	<script  src='public/js/jquery.min.js'></script>
 	<script  src='public/js/moment.min.js'></script>
 	<script  src='public/js/fullcalendar.min.js'></script>
+	<script  src='public/js/es.js'></script>
 
 </head>
 <body>
