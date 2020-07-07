@@ -4,7 +4,7 @@ include_once 'libs/database.php';
  include 'config/config.php';
  $conexion = new Database();
 
- $query= "SELECT servicios.Tipo_servicio AS servicioAgendado,pc.Nombre AS EMPLEADO,pe.Nombre AS CLIENTE, RESERVAS.Fecha AS start,RESERVAS.Fecha AS end,reservas.Hora as start,RESERVAS.Precio,RESERVAS.Observaciones
+ $query= "SELECT servicios.Tipo_servicio AS title,pc.Nombre AS EMPLEADO,pe.Nombre AS CLIENTE, RESERVAS.Fecha AS start,RESERVAS.Fecha AS end,reservas.Hora as start,RESERVAS.Precio,RESERVAS.Observaciones
  FROM RESERVAS
 INNER JOIN servicios ON servicios.idSERVICIOS=reservas.SERVICIOS_idSERVICIOS
 INNER JOIN personas as pc on pc.idPersonas=reservas.Cliente
