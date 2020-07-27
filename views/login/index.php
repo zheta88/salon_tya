@@ -1,7 +1,7 @@
 <?php
     include_once 'models/nuevomodel.php';
 
-    session_start();
+    //session_start();
 
     if(isset($_GET['cerrar_sesion'])){
         session_unset();

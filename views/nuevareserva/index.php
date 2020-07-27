@@ -9,10 +9,14 @@
     <link rel="stylesheet" href="public/css/main.css">
     
     <title>Registro reserva</title>
+            <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <?php require 'views/header.php'; session_start();?>
+    <?php require 'views/header.php'; /*session_start();*/?>
 
         <div class="container-fluid" style="text-align:center;">
             <div><?php echo $this->mensaje; ?></div>
@@ -33,7 +37,7 @@
 									 
 									 ?>
 
-                                        <select name="SERVICIOS_idSERVICIOS" id="inputState" class="form-control">
+                                        <select name="SERVICIOS_idSERVICIOS" id="SERVICIOS_idSERVICIOS" class="form-control">
 										
                                             <option selected>Elige Servicio...</option>
 											<?php foreach ($opcionesServicio as $elemento){
@@ -55,11 +59,11 @@
 									 
 									 ?>
 
-                                        <select name="Cliente" id="inputState" class="form-control">
+                                        <select name="Cliente" id="Cliente" class="form-control">
 										
                                             <option selected>Quien deseas que te atienda...</option>
 											<?php foreach ($opcionesServicio as $elemento){
-                                            echo '<option value="'.$elemento['idpersonas'].'">'.$elemento['nombre'].'</option>';
+                                            echo '<option value="'.$elemento['idPersonas'].'">'.$elemento['nombre'].'</option>';
 											 }?>
                                            
 
@@ -86,7 +90,7 @@
 										
                                             <option selected>Elige Cliente...</option>
 											<?php foreach ($opcionesServicio as $elemento){
-                                            echo '<option value="'.$elemento['idpersonas'].'">'.$elemento['nombre'].'</option>';
+                                            echo '<option value="'.$elemento['idPersonas'].'">'.$elemento['nombre'].'</option>';
 											 }?>
                                            
 
@@ -95,7 +99,7 @@
                                           									
                                     <?php } else {?>
                                        
-                                            <input type="hidden" value=<?php echo $_SESSION['idpersonas'] ?> name="Empleado" >
+                                            <input type="hidden" value=<?php echo $_SESSION['idPersonas'] ?> name="Empleado" >
 
                                     <?php }?>
 								</div> 
@@ -129,3 +133,26 @@
     
 </body>
 </html>
+
+<!-- <script type="text/javascript">
+	$(document).ready(function(){
+		$('#SERVICIOS_idSERVICIOS').val(1);
+		recargarLista();
+
+		$('#SERVICIOS_idSERVICIOS').change(function(){
+			recargarLista();
+		});
+	})
+</script>
+<script type="text/javascript">
+	function recargarLista(){
+		$.ajax({
+			type:"POST",
+			url:"nuevareservamodel.php",
+			data:"servicio=" + $('#SERVICIOS_idSERVICIOS').val(),
+			success:function(r){
+				$('#Cliente').html(r);
+			}
+		});
+	}
+</script> -->

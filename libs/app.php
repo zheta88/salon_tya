@@ -19,6 +19,15 @@ class App{
         }else{
             $archivoController = 'controllers/' . $url[0] . '.php';
         }
+        // if (session_status() == PHP_SESSION_NONE) {
+        //     session_start();
+        // }
+        session_start();
+        if (isset($_SESSION['rol']) and $url[0]=='login'){
+            header('Location:index');
+        }elseif(!isset($_SESSION['rol']) and $url[0] !='login'){
+            header('Location: login');
+        }
  
         if(file_exists($archivoController)){
             require $archivoController;

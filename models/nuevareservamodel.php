@@ -64,6 +64,25 @@ class Nuevareservamodel extends Model{
             return null;
         }
     }
+    public function reserva(){
+        $item = array();
+        try{
+            $query = $this->db->connect()->prepare('SELECT * FROM reservas');
+
+            $query->execute();
+            $i=0;
+            
+            while($row = $query->fetch()){
+                
+                $item[$row['cliente'] . "-" . $row['fecha'] . "-" . $row['hora']]=$row;
+                $i++;   
+            }
+            return $item;
+        }catch(PDOException $e){
+            return null;
+        }
+    }
+
     public function getcliente(){
         $item = array();
         try{

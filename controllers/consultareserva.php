@@ -19,7 +19,7 @@ class Consultareserva extends Controller{
     
         $reserva = $this->model->getById($idreserva);
 
-        session_start();
+        //session_start();
         $_SESSION["id_verReserva"] = $reserva->servicio;
 
         $this->view->reserva = $reserva;
@@ -27,7 +27,7 @@ class Consultareserva extends Controller{
     }
 
     function actualizarReserva($param = null){
-        session_start();
+       // session_start();
         $servicio = $_SESSION["id_verReserva"];
         $Cliente=$_POST['C  liente'];
         $Empleado   = $_POST['Empleado'];

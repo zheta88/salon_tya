@@ -1,7 +1,7 @@
 <?php 
 include_once 'models/nuevomodel.php';
 $conexion = new Database();
-session_start();
+//session_start();
 
 $iduser= $_SESSION['idPersonas'];
 $sql="SELECT idPersonas,Nombre,Correo from personas where idPersonas='$iduser'";

@@ -18,7 +18,7 @@ class Consulta extends Controller{
         $idpersona = $param[0];
         $persona = $this->model->getById($idpersona);
 
-        session_start();
+        //session_start();
         $_SESSION["id_verPersona"] = $persona->nro_documento;
 
         $this->view->persona = $persona;
@@ -27,7 +27,7 @@ class Consulta extends Controller{
     }
 
     function actualizarPersona($param = null){
-        session_start();
+        //session_start();
         $nro_documento = $_SESSION["id_verPersona"];
         $ROL_idROL=$_POST['ROL_idROL'];
         $Documento_idDocumento=$_POST['Documento_idDocumento'];

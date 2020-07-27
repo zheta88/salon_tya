@@ -2,7 +2,7 @@
 
 require 'models/reserva.php';
 
-session_start();
+//session_start();
 
 class Consultareservamodel extends Model{
 
